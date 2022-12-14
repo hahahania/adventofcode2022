@@ -6,16 +6,17 @@ h_start = [0, 0]
 t_start = [0, 0]
 
 
-def t_position(item: tuple, ls: list, ix: int):
+def t_position(item: tuple, ls: list, index: int):
     global t_start
     x = (list(item))[0]
     y = (list(item))[1]
     if t_start not in [[x, y], [x, y-1], [x, y+1], [x-1, y-1], [x-1, y], [x-1, y+1], [x+1, y-1], [x+1, y], [x+1, y+1]]:
         if len(ls) > 1:
-            if ix != 0:
-                t_start = list(ls[ix - 1])
+            if index != 0:
+                t_start = list(ls[index - 1])
                 positions_of_t.append(tuple(t_start))
             else:
+                t_start = list(tuple(last_elements[-1]))
                 positions_of_t.append(tuple(t_start))
         else:
             positions_of_t.append(tuple(last_elements[-1]))
@@ -53,7 +54,7 @@ def move_down(item: list, ls: list):
 
 
 positions_of_t = [(0, 0)]
-last_elements = []
+last_elements = [tuple(h_start)]
 
 for i in range(len(f)):
     h_positions = []
