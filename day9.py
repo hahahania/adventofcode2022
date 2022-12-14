@@ -11,16 +11,12 @@ def t_position(item: tuple, ls: list, index: int):
     x = (list(item))[0]
     y = (list(item))[1]
     if t_start not in [[x, y], [x, y-1], [x, y+1], [x-1, y-1], [x-1, y], [x-1, y+1], [x+1, y-1], [x+1, y], [x+1, y+1]]:
-        if len(ls) > 1:
-            if index != 0:
-                t_start = list(ls[index - 1])
-                positions_of_t.append(tuple(t_start))
-            else:
-                t_start = list(tuple(last_elements[-1]))
-                positions_of_t.append(tuple(t_start))
+        if index != 0:
+            t_start = list(ls[index - 1])
+            positions_of_t.append(tuple(t_start))
         else:
-            positions_of_t.append(tuple(last_elements[-1]))
-            # t_start = [(last_elements[-1])[0], (last_elements[-1])[1]]
+            t_start = list(tuple(last_elements[-1]))
+            positions_of_t.append(tuple(t_start))
     else:
         positions_of_t.append(tuple(t_start))
 
