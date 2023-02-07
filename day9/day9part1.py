@@ -22,31 +22,27 @@ def t_position(item: tuple, ls: list, index: int):
 
 
 def move_right(item: list, ls: list):
-    if 'R' in item:
-        for i in range(item[1]):
-            h_start[0] += 1
-            ls.append(tuple(h_start))
+    for i in range(item[1]):
+        h_start[0] += 1
+        ls.append(tuple(h_start))
 
 
 def move_left(item: list, ls: list):
-    if 'L' in item:
-        for i in range(item[1]):
-            h_start[0] -= 1
-            ls.append(tuple(h_start))
+    for i in range(item[1]):
+        h_start[0] -= 1
+        ls.append(tuple(h_start))
 
 
 def move_up(item: list, ls: list):
-    if 'U' in item:
-        for i in range(item[1]):
-            h_start[1] += 1
-            ls.append(tuple(h_start))
+    for i in range(item[1]):
+        h_start[1] += 1
+        ls.append(tuple(h_start))
 
 
 def move_down(item: list, ls: list):
-    if 'D' in item:
-        for i in range(item[1]):
-            h_start[1] -= 1
-            ls.append(tuple(h_start))
+    for i in range(item[1]):
+        h_start[1] -= 1
+        ls.append(tuple(h_start))
 
 
 positions_of_t = [(0, 0)]
@@ -55,10 +51,14 @@ last_elements = [tuple(h_start)]
 for i in range(len(f)):
     h_positions = []
     try:
-        move_down(f[i], h_positions)
-        move_up(f[i], h_positions)
-        move_left(f[i], h_positions)
-        move_right(f[i], h_positions)
+        if 'D' in f[i]:
+            move_down(f[i], h_positions)
+        if 'U' in f[i]:
+            move_up(f[i], h_positions)
+        if 'L' in f[i]:
+            move_left(f[i], h_positions)
+        if 'R' in f[i]:
+            move_right(f[i], h_positions)
     except:
         pass
 
@@ -67,3 +67,5 @@ for i in range(len(f)):
     last_elements.append(h_positions[-1])
 
 print(len(set(positions_of_t)))
+
+f.close()
